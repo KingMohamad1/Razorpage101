@@ -5,26 +5,25 @@ using SailClubLibrary.Models;
 
 namespace RazorBoatApp2026InClass.Pages.Boats
 {
-    public class CreateBoatModel : PageModel
+    public class ReadBoatModel : PageModel
     {
         private IBoatRepository _repo;
 
         [BindProperty]
-        public Boat NewBoat { get; set; }
+        public Boat OneBoat { get; set; }
 
-        public CreateBoatModel(IBoatRepository boatRepository)
+        public ReadBoatModel(IBoatRepository boatRepository)
         {
             _repo = boatRepository;
         }
-
         public void OnGet()
         {
+
         }
 
-        public IActionResult OnPost()
+        public void OnPost()
         {
-            _repo.AddBoat(NewBoat);
-            return RedirectToPage("Index");
+            _repo.SearchBoat(OneBoat.SailNumber);
         }
     }
 }

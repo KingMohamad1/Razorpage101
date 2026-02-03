@@ -1,0 +1,18 @@
+﻿@page
+@using SailClubLibrary.Models
+@model RazorBoatApp2026InClass.Pages.Boats.ReadBoatModel
+@{
+    ViewData["Title"] = "Read boat";
+}
+
+<h1>Read boat</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="@Model.OneBoat.SailNumber" class="control-label"></label>
+        <input asp-for="@Model.OneBoat.SailNumber" class="form-control" />
+    </div>
+    <div>
+        <a asp-page="index">Back to list of boats</a>
+    </div>
+</form>
