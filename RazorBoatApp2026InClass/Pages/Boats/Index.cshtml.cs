@@ -10,7 +10,6 @@ namespace RazorBoatApp2026InClass.Pages.Boats
         private IBoatRepository bRepo;
         public List<Boat> Boats { get; set; }
 
-
         public IndexModel(IBoatRepository boatRepository)
         {
             bRepo = boatRepository;

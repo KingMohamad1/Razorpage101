@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace RazorBoatApp2026InClass.Pages.Member
+namespace RazorBoatApp2026InClass.Pages.Bookings
 {
-    public class UpdateMemberModel : PageModel
+    public class CreateBookingModel : PageModel
     {
         public void OnGet()
         {

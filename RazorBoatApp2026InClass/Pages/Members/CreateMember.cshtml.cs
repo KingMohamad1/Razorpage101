@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace RazorBoatApp2026InClass.Pages.Member
+namespace RazorBoatApp2026InClass.Pages.Members
 {
-    public class ReadMemberModel : PageModel
+    public class CreateMemberModel : PageModel
     {
         public void OnGet()
         {
