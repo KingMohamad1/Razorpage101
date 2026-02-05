@@ -1,0 +1,18 @@
+﻿@page
+@model RazorBoatApp2026InClass.Pages.Members.DeleteMemberModel
+@{
+    ViewData["Title"] = "Delete member";
+}
+
+<h1>Delete boat</h1>
+<form method="post">
+    <label>Member id</label>: @Model.ChosenMember.Id<br />
+    <label>Member firstname</label>: @Model.ChosenMember.FirstName<br />
+    <label>Member surname</label>: @Model.ChosenMember.SurName<br />
+    <label>Member mail</label>: @Model.ChosenMember.Mail<br />
+    <label>Member phonenumber</label>: @Model.ChosenMember.PhoneNumber<br />
+    <input type="submit" asp-page-handler="Delete" asp-route-phoneNumber="@Model.ChosenMember.PhoneNumber" class="btn btn-danger" value="Delete member" />
+    <input type="submit" class"btn btn-warning" value="Cancel" />
+</form>
+
+

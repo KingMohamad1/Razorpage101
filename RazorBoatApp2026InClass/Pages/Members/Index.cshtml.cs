@@ -17,8 +17,7 @@ namespace RazorBoatApp2026InClass.Pages.Members
         }
         public void OnGet()
         {
-            // TODO: Replace with actual data retrieval logic
-            Members = new List<Member>();
+            Members = mRepo.GetAllMembers();
         }
     }
 }

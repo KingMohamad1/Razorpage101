@@ -17,13 +17,19 @@ namespace RazorBoatApp2026InClass.Pages.Boats
             _repo = boatRepository;
         }
 
-        public void OnGet()
+        public IActionResult OnGet(string sailNumber)
         {
+            ChosenBoat = _repo.SearchBoat(sailNumber);
+            return Page();
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnPostDelete(string sailNumber)
         {
-            _repo.RemoveBoat(ChosenBoat.SailNumber);
+            _repo.RemoveBoat(sailNumber);
+            return RedirectToPage("Index");
+        }
+        public IActionResult OnPost(string sailNumber)
+        {
             return RedirectToPage("Index");
         }
     }

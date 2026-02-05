@@ -10,15 +10,6 @@
 <p>
     <a asp-page="CreateBoat">Create a new boat</a>
 </p>
-<p>
-    <a asp-page="ReadBoat">Read an existing boat</a>
-</p>
-<p>
-    <a asp-page="UpdateBoat">Update an existing boat</a>
-</p>
-<p>
-    <a asp-page="DeleteBoat">Delete an existing boat</a>
-</p>
 
 <table class="table">
     <thead>
@@ -28,6 +19,7 @@
             <th>Model</th>
             <th>SailNumber</th>
             <th>YearOfConstruction</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -39,6 +31,8 @@
                 <td>@item.Model</td>
                 <td>@item.SailNumber</td>
                 <td>@item.YearOfConstruction</td>
+                <td><a asp-page="DeleteBoat" asp-route-sailNumber="@item.SailNumber">Delete</a> |
+                <a asp-page="UpdateBoat" asp-route-sailNumber="@item.SailNumber">Edit</a></td>
             </tr>
         }
 

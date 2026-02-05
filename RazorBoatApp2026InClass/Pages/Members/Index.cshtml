@@ -8,7 +8,7 @@
 <h1>List of members</h1>
 
 <p>
-    <a asp-page="CreateBoat">Create a new member</a>
+    <a asp-page="CreateMember">Create a new member</a>
 </p>
 
 <table class="table">
@@ -38,6 +38,8 @@
                 <td>@item.Address</td>
                 <td>@item.TheMemberRole</td>
                 <td>@item.TheMemberType</td>
+                <td><a asp-page="DeleteMember" asp-route-phoneNumber="@item.PhoneNumber">Delete</a> |
+                    <a asp-page="UpdateMember" asp-route-phoneNumber="@item.PhoneNumber">Edit</a></td>
             </tr>
         }
 
