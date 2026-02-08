@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddTransient<IBoatRepository, BoatRepository>();
 builder.Services.AddTransient<IMemberRepository,MemberRepository>();
+builder.Services.AddTransient<IBookingRepository,BookingRepository>();
 
 var app = builder.Build();
 
