@@ -38,6 +38,10 @@ namespace SailClubLibrary.Models
             TheMember = member;
             TheBoat = boat;
         }
+        public Booking()
+        {
+            
+        }
         #endregion
         #region Methods
         public override string ToString()

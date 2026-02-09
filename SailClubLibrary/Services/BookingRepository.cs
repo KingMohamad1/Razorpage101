@@ -1,4 +1,5 @@
-﻿using SailClubLibrary.Exceptions;
+﻿using SailClubLibrary.Data;
+using SailClubLibrary.Exceptions;
 using SailClubLibrary.Interfaces;
 using SailClubLibrary.Models;
 using System;
@@ -21,7 +22,7 @@ namespace SailClubLibrary.Services
         #region Constructors
         public BookingRepository()
         {
-            _bookings = [];
+            _bookings = MockData.BookingData;
         }
         #endregion
 
@@ -72,7 +73,9 @@ namespace SailClubLibrary.Services
 
             if ((boat == null || member == null))
             {
-                throw new NullReferenceException("Mangler input");
+                //throw new NullReferenceException("Mangler input");
+                boat = MockData.BoatData["16-3335"];
+                member = MockData.MemberData["23456789"];
             }
 
             if ((startDate >= endDate))

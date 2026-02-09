@@ -24,12 +24,22 @@ namespace SailClubLibrary.Data
             { "17-8767", new Boat(2, BoatType.LYNÆS, "Model", "17-8767", "Fast :3", 34, 25, 17, "2000")},
 
               };
+        private static List<Booking> _bookingData = 
+            new List<Booking>()
+            { 
+
+            };
         #endregion
+
 
         #region Properties
         public static Dictionary<string, Member> MemberData
         {
             get { return _memberData; }
+        }
+        public static List<Booking> BookingData
+        {
+            get { return _bookingData; }
         }
         public static Dictionary<string, Boat> BoatData
         {
