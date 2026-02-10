@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using SailClubLibrary.Exceptions;
 using SailClubLibrary.Interfaces;
 using SailClubLibrary.Models;
 
@@ -23,7 +24,25 @@ namespace RazorBoatApp2026InClass.Pages.Boats
 
         public IActionResult OnPost()
         {
-            _repo.AddBoat(NewBoat);
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+            try
+            {
+                _repo.AddBoat(NewBoat);
+            }
+            catch (BoatSailnumberExistsException bex)
+            {
+                ViewData["ErrorMessage"] = bex.Message;
+                return Page();
+                throw;
+            }
+            catch(Exception exp)
+            {
+                ViewData["ErrorMessage"] = exp.Message;
+                return Page();
+            }
             return RedirectToPage("Index");
         }
     }
