@@ -1,3 +1,4 @@
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SailClubLibrary.Exceptions;
@@ -22,6 +23,7 @@ namespace RazorBoatApp2026InClass.Pages.Boats
         {
         }
 
+
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
@@ -36,9 +38,8 @@ namespace RazorBoatApp2026InClass.Pages.Boats
             {
                 ViewData["ErrorMessage"] = bex.Message;
                 return Page();
-                throw;
             }
-            catch(Exception exp)
+            catch (Exception exp)
             {
                 ViewData["ErrorMessage"] = exp.Message;
                 return Page();

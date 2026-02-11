@@ -1,4 +1,5 @@
-﻿@page
+﻿
+@page
 @using SailClubLibrary.Models
 @model RazorBoatApp2026InClass.Pages.Boats.IndexModel
 @{
@@ -11,6 +12,10 @@
     <a asp-page="CreateBoat">Create a new boat</a>
 </p>
 
+<form method="get">
+    search:<input type="text" asp-for="@Model.FilterCriteria"/>
+    <input type="submit" value="Filter" />
+</form>
 <table class="table">
     <thead>
         <tr>
@@ -20,6 +25,7 @@
             <th>SailNumber</th>
             <th>YearOfConstruction</th>
             <th></th>
+            
         </tr>
     </thead>
     <tbody>
@@ -32,7 +38,7 @@
                 <td>@item.SailNumber</td>
                 <td>@item.YearOfConstruction</td>
                 <td><a asp-page="DeleteBoat" asp-route-sailNumber="@item.SailNumber">Delete</a> |
-                <a asp-page="UpdateBoat" asp-route-sailNumber="@item.SailNumber">Edit</a></td>
+                <a asp-page="EditBoat" asp-route-sailNumber="@item.SailNumber">Edit</a></td>
             </tr>
         }
 
