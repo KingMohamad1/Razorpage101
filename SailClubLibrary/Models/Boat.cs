@@ -10,7 +10,7 @@ namespace SailClubLibrary.Models
     /// <summary>
     /// Generic Class for Constructing Boat Objects using the interface
     /// </summary>
-    public class Boat
+    public class Boat : IComparable<Boat>
     {
         #region Instance Fields
 
@@ -67,6 +67,37 @@ namespace SailClubLibrary.Models
                 $"\nDybgang: {Draft}, Bredde: {Width}, Længde: {Length}");
         }
         #endregion
-
+        public int CompareTo(Boat? other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            return Id.CompareTo(other.Id);
+        }
+        public int CompareToID(Boat? other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            return Id.CompareTo(other.Id);
+        }
+        public int CompareToSailNumber(Boat? other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            return SailNumber.CompareTo(other.SailNumber);
+        }
+        public int CompareToByYear(Boat? other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            return YearOfConstruction.CompareTo(other.YearOfConstruction);
+        }
     }
 }

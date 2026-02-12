@@ -19,7 +19,7 @@ namespace RazorBoatApp2026InClass.Pages.Boats
         {
             bRepo = boatRepository;
         }
-        public void OnGet()
+        public IActionResult OnGet()
         {
             if (!string.IsNullOrEmpty(FilterCriteria))
             {
@@ -27,6 +27,20 @@ namespace RazorBoatApp2026InClass.Pages.Boats
             }
             else
                 Boats = bRepo.GetAllBoats();
+            if (SortBy == "ID")
+            {
+                Boats.Sort();
+                return Page();
+            }else if (SortBy == "SailNumber")
+            {
+                Boats.Sort();
+                return Page();
+            }else if (SortBy == "YearOfConstruction")
+            {
+                Boats.Sort();
+                return Page();
+            }
+            return Page();
         }
     }
 }
