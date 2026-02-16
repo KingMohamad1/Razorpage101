@@ -10,6 +10,7 @@ namespace RazorBoatApp2026InClass.Pages.Boats
     {
         private IBoatRepository bRepo;
         public List<Boat> Boats { get; set; }
+        public Boat b;
 
         [BindProperty(SupportsGet = true)]
         public string SortBy { get; set; }
@@ -27,19 +28,30 @@ namespace RazorBoatApp2026InClass.Pages.Boats
             }
             else
                 Boats = bRepo.GetAllBoats();
-            if (SortBy == "ID")
+            switch (SortBy)
             {
-                Boats.Sort();
-                return Page();
-            }else if (SortBy == "SailNumber")
-            {
-                Boats.Sort();
-                return Page();
-            }else if (SortBy == "YearOfConstruction")
-            {
-                Boats.Sort();
-                return Page();
+                case "ID":
+                    Boats.Sort((a, b) => a.CompareToID(b));
+                    return Page();
+                case "SailNumber":
+                    Boats.Sort((a, b) => a.CompareToSailNumber(b));
+                    return Page();
+                case "YearOfConstruction":
+                    Boats.Sort((a, b) => a.CompareToByYear(b));
+                    return Page();
             }
+            //if (SortBy == "ID")
+            //{
+
+            //}else if (SortBy == "SailNumber")
+            //{
+            //    Boats.Sort();
+            //    return Page();
+            //}else if (SortBy == "YearOfConstruction")
+            //{
+            //    Boats.Sort();
+            //    return Page();
+            //}
             return Page();
         }
     }
