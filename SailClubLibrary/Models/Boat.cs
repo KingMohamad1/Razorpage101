@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SailClubLibrary.Helpers.Sorting;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
@@ -14,7 +15,9 @@ namespace SailClubLibrary.Models
     public class Boat : IComparable<Boat>
     {
         #region Instance Fields
-
+        BoatCompareByID b1 = new BoatCompareByID();
+        BoatCompareBySailNumber b2;
+        BoatCompareBySailNumber b3;
         #endregion
 
         #region Properties
@@ -83,6 +86,7 @@ namespace SailClubLibrary.Models
                 return 1;
             }
             return Id.CompareTo(other.Id);
+            //return b1.Compare(other, other);
         }
         public int CompareToSailNumber(Boat? other)
         {
@@ -91,6 +95,7 @@ namespace SailClubLibrary.Models
                 return 1;
             }
             return SailNumber.CompareTo(other.SailNumber);
+            //return b2.Compare(other, other);
         }
         public int CompareToByYear(Boat? other)
         {
@@ -99,6 +104,7 @@ namespace SailClubLibrary.Models
                 return 1;
             }
             return YearOfConstruction.CompareTo(other.YearOfConstruction);
+            //return b3.Compare(other, other);
         }
     }
 }

@@ -33,6 +33,7 @@ namespace SailClubLibrary.Helpers.Sorting
                 return 1;
             }
             return -1;
+            
         }
     }
 }
