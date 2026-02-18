@@ -2,13 +2,17 @@
 @using SailClubLibrary.Models
 @model RazorBoatApp2026InClass.Pages.Bookings.CreateBookingModel
 @{
-    ViewData["Title"] = "Create boat";
+    ViewData["Title"] = "Create booking";
 }
 
-<h1>Create a booking</h1>
-
+<h1>Create booking</h1>
+<table class="table">
+    <tbody>
+        @if(Model.ViewData.ContainsKey(Model.))
+    </tbody>
+</table>
 <form method="post">
-
+    
     <div class="form-group">
         <label asp-for="@Model.NewBooking.Id" class="control-label"></label>
         <input asp-for="@Model.NewBooking.Id" readonly class="form-control" />

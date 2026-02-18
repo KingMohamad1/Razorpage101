@@ -8,13 +8,16 @@ namespace RazorBoatApp2026InClass.Pages.Bookings
     public class CreateBookingModel : PageModel
     {
         private IBookingRepository _repo;
+        private IBoatRepository _bRepo;
 
         [BindProperty]
         public Booking NewBooking { get; set; }
+        public Boat newBoat { get; set; }
 
-        public CreateBookingModel(IBookingRepository bookingRepository)
+        public CreateBookingModel(IBookingRepository bookingRepository, IBoatRepository repo)
         {
             _repo = bookingRepository;
+            _bRepo = repo;
         }
 
         public void OnGet()
