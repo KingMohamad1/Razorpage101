@@ -7,28 +7,47 @@ namespace RazorBoatApp2026InClass.Pages.Bookings
 {
     public class CreateBookingModel : PageModel
     {
+        //public List<Boat> Boats { get; set; }
         private IBookingRepository _repo;
         private IBoatRepository _bRepo;
+        private IMemberRepository _mRepo;
 
+        //Lave felter til startdate/enddate
         [BindProperty]
-        public Booking NewBooking { get; set; }
+        public DateTime StartDate { get; set; }
+        [BindProperty]
+        public DateTime EndDate { get; set; }
+        [BindProperty]
+        //public Booking NewBooking { get; set; }
+        public string Destination { get; set; }
+        [BindProperty]
+        public string PhoneNumber { get; set; }
         public Boat newBoat { get; set; }
 
-        public CreateBookingModel(IBookingRepository bookingRepository, IBoatRepository repo)
+        public CreateBookingModel(IBookingRepository bookingRepository, IBoatRepository repo, IMemberRepository memberRepo)
         {
+
+            //INjecte memberrepository
+            _mRepo = memberRepo;
             _repo = bookingRepository;
             _bRepo = repo;
         }
 
-        public void OnGet()
+        public void OnGet(int id, string sailNumber)
         {
-            NewBooking = new Booking();
-            NewBooking.Id = 69;
+            //NewBooking = new Booking();
+            //NewBooking.Id = id;
+            newBoat=_bRepo.SearchBoat(sailNumber);
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnPost(string sailNumber)
         {
-            _repo.AddBooking(NewBooking);
+            //finde medlemmet udfra telefon nr
+
+            //finde boat ud fra sailnumber
+            //LAve et booking
+            //Adde booking til bookingrepo
+            //_repo.AddBooking(NewBooking);
             return RedirectToPage("Index");
         }
     }
