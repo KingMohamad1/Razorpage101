@@ -18,7 +18,6 @@ namespace RazorBoatApp2026InClass.Pages.Bookings
         [BindProperty]
         public DateTime EndDate { get; set; }
         [BindProperty]
-        //public Booking NewBooking { get; set; }
         public string Destination { get; set; }
         [BindProperty]
         public string PhoneNumber { get; set; }
@@ -37,7 +36,7 @@ namespace RazorBoatApp2026InClass.Pages.Bookings
         {
             //NewBooking = new Booking();
             //NewBooking.Id = id;
-            newBoat=_bRepo.SearchBoat(sailNumber);
+            newBoat =_bRepo.SearchBoat(sailNumber);
         }
 
         public IActionResult OnPost(string sailNumber)
@@ -46,7 +45,9 @@ namespace RazorBoatApp2026InClass.Pages.Bookings
 
             //finde boat ud fra sailnumber
             //LAve et booking
+            Booking Booking = new Booking();
             //Adde booking til bookingrepo
+            _repo.AddBooking(Booking);
             //_repo.AddBooking(NewBooking);
             return RedirectToPage("Index");
         }
