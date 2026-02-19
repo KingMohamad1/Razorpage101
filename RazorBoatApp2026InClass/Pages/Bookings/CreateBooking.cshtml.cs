@@ -22,6 +22,7 @@ namespace RazorBoatApp2026InClass.Pages.Bookings
         [BindProperty]
         public string PhoneNumber { get; set; }
         public Boat newBoat { get; set; }
+        public Member Member { get; set; }
 
         public CreateBookingModel(IBookingRepository bookingRepository, IBoatRepository repo, IMemberRepository memberRepo)
         {
@@ -42,8 +43,9 @@ namespace RazorBoatApp2026InClass.Pages.Bookings
         public IActionResult OnPost(string sailNumber)
         {
             //finde medlemmet udfra telefon nr
-
+            PhoneNumber = Member.PhoneNumber;
             //finde boat ud fra sailnumber
+            
             //LAve et booking
             Booking Booking = new Booking();
             //Adde booking til bookingrepo
