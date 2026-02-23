@@ -6,63 +6,33 @@
 }
 
 <h1>Create booking</h1>
-@* <table class="table">
-    <tbody>
-        @foreach (Boat stuf in Model.Boats)
-        {
-            if (stuf.SailNumber == Model.newBoat.SailNumber)
-            {
-                <tr>
-                    <th>Boat id : @Model.newBoat.Id </th>
-                    <th>Boat model : @Model.newBoat.Model</th>
-                    <th>Boat year of construction : @Model.newBoat.YearOfConstruction</th>
-                </tr>
-            } 
-        }
-    </tbody>
-</table> *@
+
+<p>
+    Boat id : @Model.newBoat.Id
+    <br />
+    Boat sailnumber : @Model.newBoat.SailNumber
+    <br />
+    Boat model : @Model.newBoat.Model
+    <br />
+    Boat year of construction : @Model.newBoat.YearOfConstruction
+</p>
 
 <form method="post">
-    
     <div class="form-group">
-        <label asp-for="@Model.newBoat.Id" class="control-label"></label>
-        <input asp-for="@Model.newBoat.Id" readonly class="form-control" />
-    </div>
-
-    <div class="form-group">
-        <label asp-for="@Model.Destination" class="control-label"></label>
-        <input asp-for="@Model.Destination" class="form-control" />
-    </div>
-
-    <div class="form-group">
-        <label asp-for="@Model.PhoneNumber" class="control-label"></label>
+        <th>Member phonenumber</th>
         <input asp-for="@Model.PhoneNumber" class="form-control" />
     </div>
 
-    @* <div class="form-group">
-        <label asp-for="@Model.NewBooking.EndDate" class="control-label"></label>
-        <input asp-for="@Model.NewBooking.EndDate" class="form-control" />
-    </div>
- *@
-   @*  <div class="form-group">
-        <label>
-            <input asp-for=@Model.NewBooking.SailCompleted />
-            SailCompleted
-        </label>
-        @* <label asp-for="@Model.NewBooking.SailCompleted" class="control-label"></label>
-        <input asp-for="@Model.NewBooking.SailCompleted" class="form-control" /> 
-    </div> *@
-
-   @*  <div class="form-group">
-        <label asp-for="@Model.NewBooking.TheBoat" class="control-label"></label>
-        <select asp-for="@Model.NewBooking.TheBoat" class=" form-control" />
+    <div class="form-group">
+        <label asp-for="@Model.StartDate" class="control-label"></label>
+        <input asp-for="@Model.StartDate" class="form-control" />
     </div>
 
     <div class="form-group">
-        <label asp-for="@Model.NewBooking.TheMember" class="control-label"></label>
-        <select asp-for="@Model.NewBooking.TheMember" class=" form-control" />
+        <label asp-for="@Model.EndDate" class="control-label"></label>
+        <input asp-for="@Model.EndDate" class="form-control" />
     </div>
- *@
+
     <div class="form-group">
         <input type="submit" value="Create a booking" class="btn btn-primary" />
     </div>
