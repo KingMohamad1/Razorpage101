@@ -7,11 +7,10 @@ namespace RazorBoatApp2026InClass.Pages.Bookings
 {
     public class CreateBookingModel : PageModel
     {
-        //public List<Boat> Boats { get; set; }
+        public Booking Booking { get; set; }
         private IBookingRepository _repo;
         private IBoatRepository _bRepo;
         private IMemberRepository _mRepo;
-
         //Lave felter til startdate/enddate
         [BindProperty]
         public DateTime StartDate { get; set; }
@@ -33,21 +32,21 @@ namespace RazorBoatApp2026InClass.Pages.Bookings
             _bRepo = repo;
         }
 
-        public void OnGet(int id, string sailNumber)
+        public void OnGet(string sailNumber)
         {
-            //NewBooking = new Booking();
-            //NewBooking.Id = id;
-            newBoat =_bRepo.SearchBoat(sailNumber);
+            newBoat =_bRepo.SearchBoat(sailNumber)!;
         }
 
-        public IActionResult OnPost(string sailNumber)
+        public IActionResult OnPost(string sailNumber, string phoneNumber)
         {
             //finde medlemmet udfra telefon nr
-            PhoneNumber = Member.PhoneNumber;
+            phoneNumber = PhoneNumber;
+            //PhoneNumber = Member.PhoneNumber;
+            //Member.PhoneNumber = PhoneNumber;
             //finde boat ud fra sailnumber
-            
+            newBoat = _bRepo.SearchBoat(sailNumber)!;
             //LAve et booking
-            Booking Booking = new Booking();
+            Booking = new Booking(newBoat.Id, StartDate, EndDate, Destination, Member, newBoat);
             //Adde booking til bookingrepo
             _repo.AddBooking(Booking);
             //_repo.AddBooking(NewBooking);
