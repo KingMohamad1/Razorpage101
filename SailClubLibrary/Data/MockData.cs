@@ -27,7 +27,7 @@ namespace SailClubLibrary.Data
         private static List<Booking> _bookingData = 
             new List<Booking>()
             { 
-
+                 
             };
         #endregion
 

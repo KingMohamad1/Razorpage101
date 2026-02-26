@@ -10,6 +10,36 @@
 <p>
     <a asp-page="CreateMember">Create a new member</a>
 </p>
+<form method="get">
+    search: <input type="text" asp-for="@Model.FilterCriteria" />
+    <select asp-for="@Model.FilterCriteria" class="form-select d-inline-block" style="width:auto; margin-left:8px;">
+        <option value="">All</option>
+        <option value="FirstName">FirstName</option>
+        <option value="SurName">SurName</option>
+        <option value="Mail">Mail</option>
+        <option value="PhoneNumber">PhoneNumber</option>
+        <option value="City">City</option>
+        <option value="Address">Address</option>
+    </select>
+    <br />
+    <input type="radio"
+           asp-for="Members"
+           value=""
+           checked="@(Model.Members == null)" />
+    <label>All</label>
+    <br />
+    @foreach (var type in Enum.GetValues<MemberType>())
+    {
+        <input type="radio"
+               asp-for="Members"
+               value="@type" />
+        <label>@type</label>
+        <br />
+    }
+    <th>
+        <button type="submit" class="btn btn-outline-dark" name="FilterBy" Value="TheMemberType">Filter</button>
+    </th>
+</form>
 
 <table class="table">
     <thead>

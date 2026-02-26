@@ -45,6 +45,7 @@ namespace RazorBoatApp2026InClass.Pages.Bookings
             //Member.PhoneNumber = PhoneNumber;
             //finde boat ud fra sailnumber
             newBoat = _bRepo.SearchBoat(sailNumber)!;
+            Member = _mRepo.SearchMember(phoneNumber)!;
             //LAve et booking
             Booking = new Booking(newBoat.Id, StartDate, EndDate, Destination, Member, newBoat);
             //Adde booking til bookingrepo

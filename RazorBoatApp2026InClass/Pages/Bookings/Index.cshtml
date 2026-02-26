@@ -8,20 +8,19 @@
 <h1>List of bookings</h1>
 
 <p>
-    <a asp-page="CreateBooking">Create a new booking</a>
+    <a asp-page="chooseBoat">Create a new booking</a>
 </p>
 
 <table class="table">
     <thead>
         <tr>
             <th>Id</th>
-            <th>Destination</th>
-            <th>StartDate</th>
-            <th>EndDate</th>
-            <th>IsActive</th>
-            <th>SailCompleted</th>
-            <th>TheBoat</th>
-            <th>TheMember</th>
+            <td>TheBoatType</td>
+            <td>Model</td>
+            <td>SailNumber</td>
+            <td>PhoneNumber</td>
+            <td>StartDate</td>
+            <td>EndDate</td>     
             <th></th>
         </tr>
     </thead>
@@ -30,15 +29,13 @@
         {
             <tr>
                 <td>@item.Id</td>
-                <td>@item.Destination</td>
-                <td>@item.StartDate.Year</td>
-                <td>@item.EndDate.Year</td>
-                <td>@item.IsActive</td>
-                <td>@item.SailCompleted</td>
+                <td>@item.TheBoat.TheBoatType</td>
                 <td>@item.TheBoat.Model</td>
-                <td>@item.TheMember.FirstName</td>
+                <td>@item.TheBoat.SailNumber</td>
+                <td>@item.TheMember.PhoneNumber</td>
+                <td>@item.StartDate</td>
+                <td>@item.EndDate</td>
             </tr>
         }
-
     </tbody>
 </table>
