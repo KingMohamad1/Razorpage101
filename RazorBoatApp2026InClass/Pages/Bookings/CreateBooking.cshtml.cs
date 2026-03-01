@@ -16,7 +16,6 @@ namespace RazorBoatApp2026InClass.Pages.Bookings
         public DateTime StartDate { get; set; }
         [BindProperty]
         public DateTime EndDate { get; set; }
-        [BindProperty]
         public string Destination { get; set; }
         [BindProperty]
         public string PhoneNumber { get; set; }
