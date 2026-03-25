@@ -6,13 +6,14 @@
 
 <h1>Delete boat</h1>
 <form method="post">
+    <input type="hidden" asp-for="@Model.ChosenMember.Id" />
     <label>Member id</label>: @Model.ChosenMember.Id<br />
     <label>Member firstname</label>: @Model.ChosenMember.FirstName<br />
     <label>Member surname</label>: @Model.ChosenMember.SurName<br />
     <label>Member mail</label>: @Model.ChosenMember.Mail<br />
     <label>Member phonenumber</label>: @Model.ChosenMember.PhoneNumber<br />
-    <input type="submit" asp-page-handler="Delete" asp-route-phoneNumber="@Model.ChosenMember.PhoneNumber" class="btn btn-danger" value="Delete member" />
-    <input type="submit" class"btn btn-warning" value="Cancel" />
+    <input type="submit" asp-page-handler="Delete" class="btn btn-danger" value="Delete member" />
+    <input type="submit" class = "btn btn-warning" value="Cancel" />
 </form>
 
 

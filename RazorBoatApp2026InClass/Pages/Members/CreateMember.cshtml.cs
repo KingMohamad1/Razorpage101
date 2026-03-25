@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SailClubLibrary.Interfaces;
 using SailClubLibrary.Models;
+using System.Threading.Tasks;
 
 namespace RazorBoatApp2026InClass.Pages.Members
 {
@@ -21,9 +22,9 @@ namespace RazorBoatApp2026InClass.Pages.Members
         {
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPost()
         {
-            _repo.AddMember(NewMember);
+            await _repo.AddMember(NewMember);
             return RedirectToPage("Index");
         }
     }

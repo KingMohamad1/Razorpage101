@@ -14,18 +14,18 @@ namespace RazorBoatApp2026InClass.Pages.Members
         {
             _repo = memberRepository;
         }
-        public void OnGet(string phoneNumber)
+        public async Task OnGetAsync(int id)
         {
-            MemberToUpdate = _repo.SearchMember(phoneNumber);
+            MemberToUpdate = await _repo.SearchMember(id);
         }
-        public IActionResult OnPostUpdate()
+        public async Task<IActionResult> OnPostUpdate()
         {
-            _repo.UpdateMember(MemberToUpdate);
+            await _repo.UpdateMember(MemberToUpdate);
             return RedirectToPage("Index");
         }
-        public IActionResult OnPostDelete()
+        public async Task<IActionResult> OnPostDelete()
         {
-            _repo.RemoveMember(MemberToUpdate);
+            await _repo.RemoveMember(MemberToUpdate);
             return RedirectToPage("Index");
         }
     }

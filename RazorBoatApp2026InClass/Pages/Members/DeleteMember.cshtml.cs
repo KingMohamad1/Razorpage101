@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SailClubLibrary.Interfaces;
 using SailClubLibrary.Models;
+using System.Threading.Tasks;
 
 namespace RazorBoatApp2026InClass.Pages.Members
 {
@@ -17,18 +18,19 @@ namespace RazorBoatApp2026InClass.Pages.Members
             _repo = memberRepository;
         }
 
-        public IActionResult OnGet(string phoneNumber)
+        public async Task<IActionResult> OnGet(int id)
         {
-            ChosenMember = _repo.SearchMember(phoneNumber);
+            ChosenMember = await _repo.SearchMember(id);
             return Page();
         }
 
-        public IActionResult OnPostDelete(Member member)
+        public async Task<IActionResult> OnPostDelete()
         {
-            _repo.RemoveMember(member);
+            //await _repo.RemoveMember(member);
+            await _repo.RemoveMember(ChosenMember);
             return RedirectToPage("Index");
         }
-        public IActionResult OnPost(string phoneNumber)
+        public IActionResult OnPost()
         {
             return RedirectToPage("Index");
         }

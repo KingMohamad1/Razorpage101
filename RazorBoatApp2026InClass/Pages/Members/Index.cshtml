@@ -68,8 +68,8 @@
                 <td>@item.Address</td>
                 <td>@item.TheMemberRole</td>
                 <td>@item.TheMemberType</td>
-                <td><a asp-page="DeleteMember" asp-route-phoneNumber="@item.PhoneNumber">Delete</a> |
-                    <a asp-page="UpdateMember" asp-route-phoneNumber="@item.PhoneNumber">Edit</a></td>
+                <td><a asp-page="DeleteMember" asp-route-ID="@item.Id">Delete</a> |
+                    <a asp-page="UpdateMember" asp-route-ID="@item.Id">Edit</a></td>
             </tr>
         }
 

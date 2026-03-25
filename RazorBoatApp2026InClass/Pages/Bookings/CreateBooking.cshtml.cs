@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SailClubLibrary.Interfaces;
 using SailClubLibrary.Models;
+using System.Threading.Tasks;
 
 namespace RazorBoatApp2026InClass.Pages.Bookings
 {
@@ -19,6 +20,7 @@ namespace RazorBoatApp2026InClass.Pages.Bookings
         public string Destination { get; set; }
         [BindProperty]
         public string PhoneNumber { get; set; }
+        public int ID { get; set; }
         public Boat newBoat { get; set; }
         public Member Member { get; set; }
 
@@ -36,15 +38,15 @@ namespace RazorBoatApp2026InClass.Pages.Bookings
             newBoat =_bRepo.SearchBoat(sailNumber)!;
         }
 
-        public IActionResult OnPost(string sailNumber, string phoneNumber)
+        public async Task<IActionResult> OnPost(string sailNumber, int id)
         {
             //finde medlemmet udfra telefon nr
-            phoneNumber = PhoneNumber;
+            id = ID;
             //PhoneNumber = Member.PhoneNumber;
             //Member.PhoneNumber = PhoneNumber;
             //finde boat ud fra sailnumber
             newBoat = _bRepo.SearchBoat(sailNumber)!;
-            Member = _mRepo.SearchMember(phoneNumber)!;
+            Member = await _mRepo.SearchMember(id)!;
             //LAve et booking
             Booking = new Booking(newBoat.Id, StartDate, EndDate, Destination, Member, newBoat);
             //Adde booking til bookingrepo

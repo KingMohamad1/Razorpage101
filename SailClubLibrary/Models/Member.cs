@@ -51,6 +51,13 @@ namespace SailClubLibrary.Models
         /// <summary>
         /// ToString method used for printing out member information
         /// </summary>
+        
+
+        public string FilterAll()
+        {
+            return ($"{FirstName} {SurName} {PhoneNumber} {PhoneNumber} {Address} {City} {Mail} {TheMemberRole} {TheMemberType} {Id} ");
+        }
+
         public override string ToString()
         {
             return $"Medlemsnummer: {Id}\nFornavn: {FirstName}\nEfternavn: {SurName}\nTelefonnummer: {PhoneNumber}\n" +
