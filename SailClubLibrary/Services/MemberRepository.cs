@@ -24,7 +24,7 @@ namespace SailClubLibrary.Services
         private string _insertSql = "insert into SailMember Values(@FirstName,@SurName,@PhoneNumber,@MemberAddress,@City,@Mail,@MemberType,@MemberRole)";
         private string _queryCount = "select Count(*) from SailMember";
         private string _queryDelete = "delete from sailmember where Member_ID = @ID";
-        private string _queryUpdate = "update SailMember set Member_PhoneNumber = @PhoneNumber, Member_FirstName = @FirstName, Member_SurName = @SurName, Member_Address = @Address, Member_City = @City, Member_Mail = @Mail, Member_MemberType = @TheMemberType, Member_MemberRole = @TheMemberRole WHERE Member_ID = @ID";
+        private string _queryUpdate = "update SailMember set Member_PhoneNumber = @PhoneNumber, Member_FirstName = @FirstName, Member_SurName = @SurName, Member_Address = @MemberAddress, Member_City = @City, Member_Mail = @Mail, Member_MemberType = @MemberType, Member_MemberRole = @MemberRole WHERE Member_ID = @ID";
         private string _searchSql = "select * from SailMember where Member_ID = @ID";
         #endregion
 
@@ -82,11 +82,11 @@ namespace SailClubLibrary.Services
                 command.Parameters.AddWithValue("@FirstName", member.FirstName);
                 command.Parameters.AddWithValue("@SurName", member.SurName);
                 command.Parameters.AddWithValue("@PhoneNumber", member.PhoneNumber);
-                command.Parameters.AddWithValue("@Address", member.Address);
+                command.Parameters.AddWithValue("@MemberAddress", member.Address);
                 command.Parameters.AddWithValue("@City", member.City);
                 command.Parameters.AddWithValue("@Mail", member.Mail);
-                command.Parameters.AddWithValue("@TheMemberType",(int) member.TheMemberType);
-                command.Parameters.AddWithValue("@TheMemberRole",(int) member.TheMemberRole);
+                command.Parameters.AddWithValue("@MemberType",(int) member.TheMemberType);
+                command.Parameters.AddWithValue("@MemberRole",(int) member.TheMemberRole);
                 await command.ExecuteNonQueryAsync();
             }
 
@@ -173,11 +173,11 @@ namespace SailClubLibrary.Services
                 command.Parameters.AddWithValue("@FirstName", updatedMember.FirstName);
                 command.Parameters.AddWithValue("@SurName", updatedMember.SurName);
                 command.Parameters.AddWithValue("@PhoneNumber", updatedMember.PhoneNumber);
-                command.Parameters.AddWithValue("@Address", updatedMember.Address);
+                command.Parameters.AddWithValue("@MemberAddress", updatedMember.Address);
                 command.Parameters.AddWithValue("@City", updatedMember.City);
                 command.Parameters.AddWithValue("@Mail", updatedMember.Mail);
-                command.Parameters.AddWithValue("@TheMemberType",(int) updatedMember.TheMemberType);
-                command.Parameters.AddWithValue("@TheMemberRole",(int) updatedMember.TheMemberRole);
+                command.Parameters.AddWithValue("@MemberType",(int) updatedMember.TheMemberType);
+                command.Parameters.AddWithValue("@MemberRole",(int) updatedMember.TheMemberRole);
                 await command.ExecuteNonQueryAsync();
             }
         }
