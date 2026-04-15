@@ -7,7 +7,7 @@
 
 <h1>Create member</h1>
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
 
 @*     <div class="form-group">
         <label asp-for="@Model.NewMember.Id" class="control-label"></label>
@@ -54,9 +54,10 @@
         <Select asp-for="@Model.NewMember.TheMemberRole" asp-items="Html.GetEnumSelectList<MemberRole>()" class="form-control"></Select>
     </div>
     <div class="form-goup">
-        <label asp-for="@Model.Photo" class="control-label"></label>
+        <label asp-for="@Model.Photo" class="control-label">Tilføj billede</label>
         <div class="custom-file">
-            <input asp-for="@Model.Photo" asp-page-handler="\Images\MemberImages" class="custom-file-input form-control" />
+            <input asp-for="@Model.Photo" class="custom-file-input form-control" />
+            <label class="custom-file-label"></label>
         </div>
     </div>
     <div class="form-group">

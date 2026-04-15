@@ -21,7 +21,7 @@ namespace SailClubLibrary.Services
         #region Instance Fields
         private Dictionary<string, Member> _members;
         private string _queryString = "select * from SailMember";
-        private string _insertSql = "insert into SailMember Values(@FirstName,@SurName,@PhoneNumber,@MemberAddress,@City,@Mail,@MemberType,@MemberRole)";
+        private string _insertSql = "insert into SailMember Values(@FirstName,@SurName,@PhoneNumber,@MemberAddress,@City,@Mail,@MemberType,@MemberRole, @MemberImage)";
         private string _queryCount = "select Count(*) from SailMember";
         private string _queryDelete = "delete from sailmember where Member_ID = @ID";
         private string _queryUpdate = "update SailMember set Member_PhoneNumber = @PhoneNumber, Member_FirstName = @FirstName, Member_SurName = @SurName, Member_Address = @MemberAddress, Member_City = @City, Member_Mail = @Mail, Member_MemberType = @MemberType, Member_MemberRole = @MemberRole WHERE Member_ID = @ID";
@@ -87,6 +87,7 @@ namespace SailClubLibrary.Services
                 command.Parameters.AddWithValue("@Mail", member.Mail);
                 command.Parameters.AddWithValue("@MemberType",(int) member.TheMemberType);
                 command.Parameters.AddWithValue("@MemberRole",(int) member.TheMemberRole);
+                command.Parameters.AddWithValue("@MemberImage", member.MemberImage);
                 await command.ExecuteNonQueryAsync();
             }
 
@@ -118,6 +119,8 @@ namespace SailClubLibrary.Services
                     MemberType memberType = Enum.GetValues<MemberType>()[reader.GetInt32("Member_MemberType")];
                     MemberRole memberRole = Enum.GetValues<MemberRole>()[reader.GetInt32("Member_MemberRole")];
                     Member member = new Member(memberId, firstName, surName, phoneNumber, memberAddress, city, mail, memberType, memberRole);
+                    string memberImage = reader.GetString("Member_MemberImage");
+                    member.MemberImage = memberImage;
                     foundMembers.Add(member);
                 }
                 reader.Close();
@@ -142,6 +145,24 @@ namespace SailClubLibrary.Services
                 command.Parameters.AddWithValue("@ID", member.Id);
                 await command.ExecuteNonQueryAsync();
             }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="phoneNumber"></param>
+        /// <returns></returns>
+        public async Task<Member> VerifyMember(string email, string phoneNumber) // we use phonenumber as our "Password"
+        {
+            foreach (var member in await GetAllMembers())
+            {
+                if (email == member.Mail && phoneNumber == member.PhoneNumber)
+                {
+                    return member;
+                }
+            }
+            return null;
+
         }
         // Formål:
         // Opdatere Medlem
