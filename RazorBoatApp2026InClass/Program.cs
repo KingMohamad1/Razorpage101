@@ -10,6 +10,7 @@ builder.Services.AddTransient<IMemberRepository,MemberRepository>();
 builder.Services.AddSession(); //new
 builder.Services.AddHttpContextAccessor(); // new
 builder.Services.AddTransient<IBookingRepository,BookingRepository>();
+builder.Services.AddScoped<MemberRepository>();
 
 var app = builder.Build();
 
