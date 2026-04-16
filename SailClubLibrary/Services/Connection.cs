@@ -8,6 +8,6 @@ namespace SailClubLibrary.Services
 {
     public class Connection
     {
-        protected string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HotStuff;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+        protected string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
     }
 }

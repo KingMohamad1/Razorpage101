@@ -11,14 +11,14 @@ namespace MemberUnitTest
         public async Task TestMethod1()
         {
             //Arrange
-            Member John = new Member(1,"Alfred","Saudi","131413131","Røstump 242 2tv","Roskilde","gordonfandy@gmail.com",MemberType.Adult,MemberRole.Member);
+            Member John = new Member(1,"Alfred","Saudi","131413131","Røstump 242","Roskilde","gord@gmail.com",MemberType.Adult,MemberRole.Member);
             MemberRepository mrepo = new MemberRepository();
 
             //Act
             await mrepo.AddMember(John);
             //Assert
             var members = await mrepo.GetAllMembers();
-            Assert.IsTrue(members.Any(john => john.Mail == "gordonfandy@gmail.com"));
+            Assert.IsTrue(members.Any(john => john.Mail == "gord@gmail.com"));
         }
     }
 }
