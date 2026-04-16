@@ -25,7 +25,6 @@ namespace SailClubLibrary.Services
         private string _queryCount = "select Count(*) from SailMember";
         private string _queryDelete = "delete from sailmember where Member_ID = @ID";
         private string _queryUpdate = "update SailMember set Member_PhoneNumber = @PhoneNumber, Member_FirstName = @FirstName, Member_SurName = @SurName, Member_Address = @MemberAddress, Member_City = @City, Member_Mail = @Mail, Member_MemberType = @MemberType, Member_MemberRole = @MemberRole WHERE Member_ID = @ID";
-        private string _searchSql = "select * from SailMember where Member_ID = @ID";
         #endregion
 
         #region Properties
@@ -147,11 +146,10 @@ namespace SailClubLibrary.Services
             }
         }
         /// <summary>
-        /// 
+        /// Method used to verify if the member actually exists
         /// </summary>
-        /// <param name="email"></param>
-        /// <param name="phoneNumber"></param>
-        /// <returns></returns>
+        /// <param name="Member">the variable is used for login to check if the typed phonenumber and email actually is equals a member in the repository </param>
+        /// <returns>returns either an existing member back or null</returns>
         public async Task<Member> VerifyMember(/*string email, string phoneNumber, */Member Member) // we use phonenumber as our "Password"
         {
             foreach (var member in await GetAllMembers())
@@ -202,7 +200,7 @@ namespace SailClubLibrary.Services
                 await command.ExecuteNonQueryAsync();
             }
         }
-
+       
         /// <summary>
         /// Searches through the member dictionary and returns the member with the given phonenumber. 
         /// </summary>
@@ -254,7 +252,11 @@ namespace SailClubLibrary.Services
             //    await command.Connection.OpenAsync();
             //}
         }
-
+        /// <summary>
+        /// Method for filtering members depending of the attribute
+        /// </summary>
+        /// <param name="filterCriteria">filtercriteria is the parameter used to filter members by their attributes</param>
+        /// <returns>Lists members by the order what they are filtered filtered by which criteria is used                   </returns>
         public async Task<List<Member>> FilterMembers(string filterCriteria)
         {
             List<Member> mList = [];
