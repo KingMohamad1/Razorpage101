@@ -16,6 +16,7 @@ namespace SailClubLibrary.Interfaces
         Task<List<Member>> GetAllMembers();
         Task PrintAll();
         Task<Member?> SearchMember(int id);
+        Task<Member?> SearchMemberByMail(string mail);
         Task<List<Member>> FilterMembers(string filterCriteria);
     }
 }

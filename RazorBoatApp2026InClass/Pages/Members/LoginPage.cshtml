@@ -1,0 +1,10 @@
+﻿@page
+@model RazorBoatApp2026InClass.Pages.Members.LoginPageModel
+@{
+    ViewData["Title"] = "You are currently signed in";
+}
+<h3>Welcome @Model.CurrentMember.FirstName</h3>
+
+<a asp-page="/members/Login" asp-page-handler="Logout">Logout</a>
+
+<h2>Bruger har id   @Model.CurrentMember.Id  og email  @Model.CurrentMember.Mail </h2>

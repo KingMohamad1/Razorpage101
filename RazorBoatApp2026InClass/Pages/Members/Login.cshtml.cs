@@ -28,12 +28,11 @@ namespace RazorBoatApp2026InClass.Pages.Members
         public async Task<IActionResult> OnPost()
         {
             //User loginUser = _userService.VerifyUser(UserName, PassWord);
-            Member member = await MemberRepository.VerifyMember(Member.Mail, Member.PhoneNumber);
+            Member member = await MemberRepository.VerifyMember(/*Member.Mail, Member.PhoneNumber,*/ Member);   
             if (member != null)
             {
-
                 HttpContext.Session.SetString("Email", member.Mail);
-                return RedirectToPage("/Welcome");
+                return RedirectToPage(pageName: "LoginPage");
             }
             else
             {

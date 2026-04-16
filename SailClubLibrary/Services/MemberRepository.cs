@@ -152,11 +152,11 @@ namespace SailClubLibrary.Services
         /// <param name="email"></param>
         /// <param name="phoneNumber"></param>
         /// <returns></returns>
-        public async Task<Member> VerifyMember(string email, string phoneNumber) // we use phonenumber as our "Password"
+        public async Task<Member> VerifyMember(/*string email, string phoneNumber, */Member Member) // we use phonenumber as our "Password"
         {
             foreach (var member in await GetAllMembers())
             {
-                if (email == member.Mail && phoneNumber == member.PhoneNumber)
+                if (/*email == member.Mail && phoneNumber == member.PhoneNumber &&*/ Member.PhoneNumber == member.PhoneNumber && Member.Mail == member.Mail)
                 {
                     return member;
                 }
@@ -218,6 +218,19 @@ namespace SailClubLibrary.Services
             foreach (Member m in member)
             {
                 if (m.Id == id)
+                {
+                    return m;
+                }
+            }
+            return null;
+        }
+        public async Task<Member?> SearchMemberByMail(string mail)
+        {
+            Task<List<Member>> listOfAllMembers = GetAllMembers();
+            List<Member> member = await listOfAllMembers;
+            foreach (Member m in member)
+            {
+                if (m.Mail == mail)
                 {
                     return m;
                 }
